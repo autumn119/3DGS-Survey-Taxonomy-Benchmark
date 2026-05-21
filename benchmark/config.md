@@ -1,67 +1,60 @@
-# 基准评测配置
+# Benchmark Configuration & Evaluation Protocol
 
-## 数据集 (Datasets)
+## Datasets
 
-| 数据集 | 场景数 | 分辨率 | 训练/测试帧 | 用途 |
-|--------|--------|--------|-------------|------|
-| Mip-NeRF 360 | 9 | 1600×1200 | 按官方划分 | 前向/360°场景 |
-| Tanks & Temples | 21 | 1920×1080 | 每7帧取1帧 | 大规模室外 |
-| Deep Blending | 2 | 1920×1080 | 按官方划分 | 复杂光照 |
-| Synthetic NeRF | 8 | 800×800 | 100训练/200测试 | 合成物体 |
-| 鼓楼场景 (自定义) | 3 | 400×400 | 134训练/56测试 | 传统建筑 |
+| Dataset | Resolution | Train / Val / Test | Description |
+|---------|-----------|---------------------|-------------|
+| Mip-NeRF 360 | 1600×1200 | scene-dependent | 7 indoor + outdoor unbounded scenes |
+| Tanks & Temples | 1920×1080 | scene-dependent | Large-scale real-world scenes |
+| DeepBlending | 1920×1080 | scene-dependent | Dr.Johnson / Playroom |
+| Drum Tower Custom | 400×400 | 134 / 15 / 56 | Chinese traditional architecture |
 
-## 评测指标 (Metrics)
+## Evaluation Metrics
 
-| 指标 | 全称 | 计算方式 | 说明 |
-|------|------|----------|------|
-| PSNR | Peak Signal-to-Noise Ratio | `10 * log10(1.0 / MSE)` | 像素级重建质量 |
-| SSIM | Structural Similarity | `skimage.metrics.structural_similarity` | 结构一致性 |
-| LPIPS | Learned Perceptual Image Patch Similarity | AlexNet/VGG backbone | 感知相似度 |
-| FPS | Frames Per Second | 渲染帧数 / 渲染时间 | 推理速度 |
-| VRAM | GPU Memory | `torch.cuda.max_memory_allocated()` | 显存占用 |
-| Train Time | 训练时间 | 总训练耗时 | 训练效率 |
+| Metric | Abbreviation | Implementation | Range | Better |
+|--------|-------------|----------------|-------|--------|
+| Peak Signal-to-Noise Ratio | PSNR | MSE-based (dB) | [0, ∞) | ↑ Higher |
+| Structural Similarity Index | SSIM | `skimage.metrics.structural_similarity` | [0, 1] | ↑ Higher |
+| Learned Perceptual Image Patch Similarity | LPIPS | `lpips.LPIPS(net='vgg')` | [0, 1] | ↓ Lower |
+| Frames Per Second | FPS | Wall-clock rendering time | [0, ∞) | ↑ Higher |
+| GPU VRAM | VRAM | `nvidia-smi` peak memory (GB) | [0, 24] | ↓ Lower |
+| Training Time | T (min) | Wall-clock optimization time | [0, ∞) | ↓ Lower |
 
-## 硬件环境 (Hardware)
+## Hardware Configuration
 
-| 组件 | 规格 |
-|------|------|
-| GPU | NVIDIA RTX 4090 (24GB) |
-| CPU | Intel Xeon |
-| RAM | 64GB |
-| OS | Ubuntu 20.04 LTS |
+| Component | Specification |
+|-----------|--------------|
+| GPU | NVIDIA RTX 4090 (24 GB GDDR6X) |
+| CPU | Intel Xeon Gold 6330 |
+| RAM | 120 GB DDR4 |
+| OS | Ubuntu 22.04 LTS |
 
-## 软件环境 (Software)
+## Software Environment
 
-| 组件 | 版本 |
-|------|------|
-| Python | 3.8 |
-| PyTorch | 1.13.1 |
-| CUDA | 11.7 |
-| 3DGS diff-gaussian-rasterization | latest |
+| Package | Version |
+|---------|---------|
+| Python | 3.10 |
+| CUDA | 11.8 |
+| PyTorch | 2.1.0 |
+| torchvision | 0.16.0 |
+| lpips | 0.1.4 |
+| numpy | 1.24+ |
+| opencv-python | 4.8+ |
 
-## 评测协议 (Evaluation Protocol)
+## Evaluation Protocol
 
-1. **公平对比原则**: 所有方法在同一数据集划分、相同分辨率下评估
-2. **超参数**: 各方法使用原论文推荐的默认超参数
-3. **迭代次数**: 统一 30,000 次迭代
-4. **随机种子**: 固定 random seed = 42
-5. **指标计算**: 使用 `scripts/compute_metrics.py` 统一计算，避免不同实现差异
-6. **多次运行**: 每个方法运行 3 次，取平均值
+1. **Train-test split**: Use dataset-provided standard splits. For Drum Tower: 134 train / 15 val / 56 test.
+2. **Resolution**: Evaluate at native rendering resolution (matching ground-truth).
+3. **Random seeds**: Fix random seed = 42 for all methods.
+4. **Metrics computation**: All methods evaluated with identical metric code (`scripts/compute_stats.py`) to avoid implementation bias.
+5. **Warm-up**: 2 warm-up render passes before FPS measurement.
+6. **VRAM**: Measured at peak GPU memory usage during rendering (not training).
 
-## 复现命令
+## Reproducibility Checklist
 
-```bash
-# 以 3DGS 原版为例
-git clone https://github.com/graphdeco-inria/gaussian-splatting
-cd gaussian-splatting
-conda activate 3dgs
-
-# 训练
-python train.py -s /path/to/dataset -m output/model_name --iterations 30000
-
-# 渲染
-python render.py -m output/model_name --skip_train
-
-# 评估
-python metrics.py -m output/model_name
-```
+- [ ] Identical hardware for all experiments
+- [ ] Fixed CUDA / PyTorch versions
+- [ ] Standard train/test split
+- [ ] Consistent metric implementation
+- [ ] Public code and dataset links
+- [ ] Zenodo DOI for permanent archiving

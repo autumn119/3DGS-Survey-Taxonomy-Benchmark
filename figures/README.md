@@ -1,18 +1,35 @@
-# 论文图表源文件
+# Paper Figures — Source Files
 
-## 包含的图表
+This directory contains all figures used in the survey paper.
 
-| 文件名 | 说明 | 格式 |
-|--------|------|------|
-| `taxonomy_figure.*` | 3DGS方法分类体系层级图 | PDF / PNG / SVG |
-| `timeline.*` | 3DGS方法发展时间线图 | PDF / PNG / SVG |
-| `benchmark_comparison.png` | 各方法基准对比柱状图 | PNG (脚本生成) |
-| `radar_comparison.png` | 多维度雷达图对比 | PNG (脚本生成) |
+## Included Figures
 
-## 生成命令
+| Filename | Description | Format |
+|----------|-------------|--------|
+| `taxonomy_reference.png` | Reference taxonomy structure from SoTA-Point-Cloud (Guo et al., TPAMI 2020) | PNG |
+| `taxonomy_figure.*` | 3DGS method classification hierarchy | PDF / PNG / SVG |
+| `timeline.*` | Chronological development of 3DGS methods | PDF / PNG / SVG |
+| `benchmark_comparison.png` | Bar chart comparing methods across metrics | PNG (script-generated) |
+| `radar_comparison.png` | Multi-dimensional radar chart | PNG (script-generated) |
+
+## Generation Commands
+
+Figures can be (re)generated from benchmark results:
 
 ```bash
-# 运行脚本生成图表（需要有 results/all_results.csv）
+# Generate all comparison figures
 cd ../scripts
-python plot_metrics.py
+python plot_metrics.py --csv ../results/all_results.csv --output_dir ../figures/
 ```
+
+### Manual Figure Creation
+
+- **Taxonomy figure**: Recommend using draw.io / TikZ / matplotlib
+- **Timeline figure**: Recommend using matplotlib timeline visualization
+- **Template**: `taxonomy_reference.png` provides a visual reference for the desired structure
+
+## Notes
+
+- All figures should be exported in both **PDF** (vector) and **PNG** (raster) formats
+- High-resolution (300+ DPI) PNG versions for publication
+- Source files (`.drawio`, `.tex`, `.py`) should be preserved alongside rendered outputs

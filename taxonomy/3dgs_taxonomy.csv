@@ -1,9 +1,54 @@
-Method Name,Year,Venue,Task Type,Module Focus,Input Modality,Scene Type,Dynamic Support,Code Link,Notes
-3DGS,2023,SIGGRAPH,Reconstruction,Base Method,Multi-view Images,General,No,https://github.com/graphdeco-inria/gaussian-splatting,Original 3DGS paper
-Scaffold-GS,2024,CVPR,Reconstruction,Anchoring + Pruning,Multi-view Images,General,No,https://github.com/city-super/Scaffold-GS,Anchor-based growth control
-Mip-Splatting,2024,CVPR,Reconstruction,Anti-aliasing,Multi-view Images,General,No,https://github.com/autonomousvision/mip-splatting,3D frequency sampling
-4DGS,2024,CVPR,Reconstruction,Temporal Modeling,Monocular Video,Dynamic,Yes,https://github.com/fudan-zvg/4d-gaussian-splatting,Dynamic scene support
-SuGaR,2024,CVPR,Reconstruction,Surface Alignment,Multi-view Images,General,No,https://github.com/Anttwo/SuGaR,Mesh extraction from 3DGS
-Compact3D,2024,ECCV,Reconstruction,Compression,Multi-view Images,General,No,https://github.com/ucdvision/compact3d,Quantized 3DGS
-PixelGS,2024,ECCV,Reconstruction,Densification,Multi-view Images,General,No,https://github.com/zhengzhang01/PixelGS,Pixel-wise densification
-GaussianPro,2024,TPAMI,Reconstruction,Optimization,Multi-view Images,Large-scale,No,https://github.com/kcheng1021/GaussianPro,Progressive optimization
+Method,Category_L1,Category_L2,Category_L3,Module_Focus,Paper_Link,Code_Link
+3D Gaussian Splatting,Proposal,Original 3DGS,Foundational,Splatting+Rasterization,https://arxiv.org/abs/2308.04079,https://github.com/graphdeco-inria/gaussian-splatting
+Scaffold-GS,Optimization,Storage Efficiency,Representation Improvement,Anchoring+Pruning,https://arxiv.org/abs/2312.00109,https://github.com/city-super/Scaffold-GS
+GES,Optimization,Storage Efficiency,Representation Improvement,Generalized Exponential,https://arxiv.org/abs/2402.10128,https://github.com/abdullahamdi/ges
+LightGaussian,Optimization,Storage Efficiency,Pruning&Compression,SH Distillation,https://arxiv.org/abs/2311.17245,https://github.com/VITA-Group/LightGaussian
+Compact3D,Optimization,Storage Efficiency,Pruning&Compression,Vector Quantization,https://arxiv.org/abs/2311.13659,https://github.com/ucdvision/compact3d
+Compressed 3DGS,Optimization,Storage Efficiency,Pruning&Compression,Sensitivity-aware Quantization,https://arxiv.org/abs/2401.06114,https://github.com/KeKsBoTer/c3dgs
+EAGLES,Optimization,Storage Efficiency,Pruning&Compression,Gaussian Encoding,https://arxiv.org/abs/2312.04564,—
+Gaussian-Forest,Optimization,Storage Efficiency,Pruning&Compression,Hierarchical Decomposition,—,—
+DISTWAR,Optimization,Training Efficiency,GPU Acceleration,Warp-level Rasterization,https://arxiv.org/abs/2401.05396,—
+GSCore,Optimization,Rendering Efficiency,GPU Acceleration,Custom GPU Kernel,—,—
+RadSplat,Optimization,Rendering Efficiency,GPU Acceleration,Radiance Field+MLP,https://arxiv.org/abs/2403.13806,—
+StopThePop,Optimization,Rendering Efficiency,Splatting,Sorted Blending Optimization,https://arxiv.org/abs/2402.00525,—
+Mip-Splatting,Optimization,Photorealism,Anti-Aliasing,3D Smoothing+2D Mip Filter,https://arxiv.org/abs/2311.16493,https://github.com/autonomousvision/mip-splatting
+Multi-Scale 3DGS,Optimization,Photorealism,Anti-Aliasing,Multi-scale Gaussians,https://arxiv.org/abs/2311.17077,https://github.com/ZehaoYu/multi_scale_3DGS
+GaussianShader,Optimization,Photorealism,View-Dependent Effects,Normal-based Shading,https://arxiv.org/abs/2311.17977,https://github.com/Asparagus15/GaussianShader
+Spec-Gaussian,Optimization,Photorealism,View-Dependent Effects,Anisotropic Spherical,https://arxiv.org/abs/2312.05890,—
+FreGS,Optimization,Photorealism,Frequency Enhancement,Frequency Annealing,https://arxiv.org/abs/2311.17418,https://github.com/JiahuiFan/FreGS
+GaussianPro,Optimization,Photorealism,Detail Enhancement,Progressive Propagation,https://arxiv.org/abs/2402.14650,https://github.com/kcheng1021/GaussianPro
+DeblurGS,Optimization,Photorealism,Robustness,Motion Deblur,https://arxiv.org/abs/2401.06023,https://github.com/chaphlagical/Deblur-GS
+Relightable 3DGS,Optimization,Photorealism,Robustness,BRDF+Ray Tracing,https://arxiv.org/abs/2311.16043,https://github.com/shunsukesaito
+pixelSplat,Generalization,Generalizable,Few/Zero-Shot,Epipolar Transformer,https://arxiv.org/abs/2312.07737,https://github.com/dcharatan/pixelsplat
+MVSplat,Generalization,Generalizable,Few/Zero-Shot,Cost-volume Matching,https://arxiv.org/abs/2403.03804,https://github.com/TomyDeng/MVSplat
+Splatter Image,Generalization,Generalizable,Single-View,Single-view Speed,https://arxiv.org/abs/2312.13150,https://github.com/szymanowiczs/splatter-image
+latentSplat,Generalization,Generalizable,Feature Matching,Latent Space Generation,https://arxiv.org/abs/2403.16034,—
+FSGS,Generalization,Sparse View,Few-Shot (3 views),Proximity Unpooling,https://arxiv.org/abs/2312.00451,https://github.com/VITA-Group/FSGS
+DNGaussian,Generalization,Sparse View,Depth-Regularized,Depth Normalization,https://arxiv.org/abs/2311.11225,https://github.com/Fictionarry/DNGaussian
+GaussianObject,Generalization,Sparse View,Ultra-Sparse (4 imgs),4-image Reconstruction,https://arxiv.org/abs/2402.13750,—
+4D Gaussian Splatting,Dynamic,Multi-view,4D Gaussians,HexPlane+MLP,https://arxiv.org/abs/2312.13767,https://github.com/fudan-zvg/4d-gaussian-splatting
+Deformable 3DGS,Dynamic,Monocular,Deformation Field,Learnable Deformation,https://arxiv.org/abs/2312.00583,https://github.com/ingra14m/Deformable-3D-Gaussians
+3DGStream,Dynamic,Multi-view+Streaming,Online Video,Frame Transform,https://arxiv.org/abs/2403.01447,—
+SC-GS,Dynamic,Sparse Control,Editable Dynamic,Sparse Control Points,https://arxiv.org/abs/2312.04427,—
+Gaussian-Flow,Dynamic,4D,4D Particle,Fourier Domain,https://arxiv.org/abs/2312.03431,—
+SuGaR,Surface,Mesh Extraction,Poisson,Aligned Surface+Poisson,https://arxiv.org/abs/2311.12775,https://github.com/Anttwo/SuGaR
+2D Gaussian Splatting,Surface,Surfel-based,2D Disks,2D Oriented Disks,https://arxiv.org/abs/2402.02857,https://github.com/hbb1/2d-gaussian-splatting
+Gaussian Surfels,Surface,Surfel-based,Depth Rendering,Unbiased Depth+Normal,https://arxiv.org/abs/2402.03792,https://github.com/turandai/gaussian_surfels
+GSDF,Surface,Implicit Repr,SDF Hybrid,GS+SDF Fusion,https://arxiv.org/abs/2311.12925,—
+3DGSR,Surface,Implicit Repr,Implicit Surface,Differentiable Poisson,https://arxiv.org/abs/2311.13046,—
+GaussianEditor,Editable,Editing,Text-guided,Semantic Tracing,https://arxiv.org/abs/2311.14521,https://github.com/buaacyw/GaussianEditor
+PhysGaussian,Simulation,Physics-aware,Continuum Mechanics,Material Point Method,https://arxiv.org/abs/2311.15265,—
+GauHuman,Human,Body,Monocular Body,SMPL-guided,https://arxiv.org/abs/2312.02161,https://github.com/skhu101/GauHuman
+3DGS-Avatar,Human,Body,Animatable Body,Deformable GS,https://arxiv.org/abs/2312.03209,—
+GaussianAvatars,Human,Head,Head Avatar,Rigged 3D Gaussians,https://arxiv.org/abs/2312.02069,https://github.com/ShenhanQian/GaussianAvatars
+GaussianTalker,Human,Head,Talking Head,Audio-driven,https://arxiv.org/abs/2312.07467,—
+DreamGaussian,AIGC,Text-to-3D,Text-to-3D,3DGS+Mesh Refinement,https://arxiv.org/abs/2309.16653,https://github.com/dreamgaussian/dreamgaussian
+LGM,AIGC,Multi-view-to-3D,Multi-view→3D,Large GS Model,https://arxiv.org/abs/2402.05041,https://github.com/3DTopia/LGM
+LucidDreamer,AIGC,Scene Generation,Text→Scene,SDS Optimization,https://arxiv.org/abs/2311.14817,https://github.com/EnVision-Research/LucidDreamer
+DreamGaussian4D,AIGC,4D Generation,Text/Video→4D,Generative 4D GS,https://arxiv.org/abs/2312.07653,https://github.com/jiawei-ren/dreamgaussian4d
+GaussianDiffusion,AIGC,Diffusion+3DGS,Diffusion Model,Diffusion for GS,https://arxiv.org/abs/2312.03433,—
+Street Gaussians,Autonomous Driving,Driving Scenes,Dynamic Urban,Explicit Dynamic Modeling,https://arxiv.org/abs/2401.01339,https://github.com/zju3dv/street_gaussians
+DrivingGaussian,Autonomous Driving,Driving Scenes,Surround-View,Composite Dynamic GS,https://arxiv.org/abs/2312.13316,—
+SplaTAM,SLAM,RGB-D SLAM,GS Mapping,Silhouette Guidance,https://arxiv.org/abs/2312.02126,https://github.com/spla-tam/SplaTAM
+GS-SLAM,SLAM,Dense Visual SLAM,SLAM+GS,Dense Visual SLAM,https://arxiv.org/abs/2311.11700,https://github.com/Gaussian-SLAM
+Gaussian-SLAM (Yugay),SLAM,Photo-realistic SLAM,SLAM+GS,Photo-real Mapping,https://arxiv.org/abs/2312.02092,https://github.com/VladimirYugay/Gaussian-SLAM

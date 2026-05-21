@@ -1,87 +1,132 @@
-# 3D Gaussian Splatting: 分类体系与基准评测综述
+# 3D Gaussian Splatting: A Comprehensive Taxonomy and Benchmark Survey
 
-> **论文配套开源仓库** | [Paper Title / arXiv / DOI TBD]
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20263999.svg)](https://doi.org/10.5281/zenodo.20263999)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## 📄 论文概览
+> **Repository for:** *"[Paper Title / arXiv / DOI TBD]"*
+> Submitted to: *[TVC / TAMI / CVPR / NeurIPS — TBD]*
 
-- **标题**: 3D Gaussian Splatting: A Comprehensive Taxonomy and Benchmark Survey
-- **投稿**: [TBD - e.g., TPAMI / CVPR / NeurIPS]
-- **贡献**:
-  1. 系统化分类体系：对现有 3DGS 方法按模块、任务、应用场景进行层级分类
-  2. 统一基准评测：在一致硬件与数据集条件下复现并对比主流方法的 PSNR/SSIM/LPIPS/FPS/VRAM
-  3. 开源工具链：提供可复现的评估脚本与结果分析工具
-
-## 🗂 仓库结构
-
-```
-├── README.md               # 本文档
-├── LICENSE                 # 开源许可证 (MIT)
-├── CITATION.cff            # 引用信息
-├── requirements.txt        # Python 依赖
-├── resources.md            # 3DGS 方法/代码/数据集/应用场景索引
-├── taxonomy/               # 分类体系
-│   └── 3dgs_taxonomy.csv   # 方法分类表
-├── benchmark/              # 基准评测配置
-│   ├── config.md           # 数据集、指标、硬件、软件版本、评测协议
-│   ├── datasets/           # 数据集预处理脚本
-│   └── metrics/            # 评测指标实现
-├── results/                # 评测结果
-│   └── all_results.csv     # PSNR / SSIM / LPIPS / FPS / VRAM / 训练时间
-├── scripts/                # 分析脚本
-│   ├── plot_metrics.py     # 生成论文图表
-│   └── compute_stats.py    # 统计汇总
-└── figures/                # 图表源文件
-    ├── taxonomy_figure.*   # 分类体系图
-    ├── timeline.*          # 方法发展时间线
-    └── benchmark_charts.*  # 基准评测图表
-```
-
-## 🔬 如何复现实验结果
-
-### 1. 环境配置
-
-```bash
-# 创建 Conda 环境
-conda create -n 3dgs-survey python=3.8
-conda activate 3dgs-survey
-
-# 安装依赖
-pip install -r requirements.txt
-```
-
-### 2. 数据准备
-
-从 `benchmark/datasets/` 目录中的脚本下载并预处理各数据集（Mip-NeRF360, Tanks&Temples, DeepBlending 等）。
-
-### 3. 运行评测
-
-```bash
-# 运行统一评测流程
-python scripts/run_benchmark.py --method all --output results/
-```
-
-### 4. 生成论文图表
-
-```bash
-# 生成所有图表
-python scripts/plot_metrics.py
-```
-
-## 📖 论文引用
-
-```bibtex
-@article{yourname20253dgs,
-  title={3D Gaussian Splatting: A Comprehensive Taxonomy and Benchmark Survey},
-  author={Your Name et al.},
-  journal={arXiv preprint},
-  year={2025}
-}
-```
-
-## 📧 联系方式
-
-如有问题，请通过 GitHub Issues 或邮件联系。
+This repository provides the complete companion resources for our comprehensive survey and benchmark study of 3D Gaussian Splatting (3DGS) methods. It includes a curated taxonomy, standardized evaluation protocol, benchmark results, automated analysis scripts, and reproducible paper figures.
 
 ---
 
-> 🏷️ 本仓库由论文作者维护，欢迎 Star ⭐ 和贡献！
+## Repository Structure
+
+```
+.
+├── README.md                    # This file
+├── LICENSE                      # MIT License
+├── CITATION.cff                 # Citation metadata (BibTeX-compatible)
+├── requirements.txt             # Python / CUDA / PyTorch dependencies
+├── resources.md                 # Curated method index, datasets & applications
+├── taxonomy/
+│   ├── README.md                # Taxonomy documentation
+│   └── 3dgs_taxonomy.csv        # Hierarchical method classification table
+├── benchmark/
+│   ├── config.md                # Datasets, metrics, hardware, evaluation protocol
+│   ├── datasets/
+│   │   └── README.md            # Dataset preprocessing & preparation guide
+│   └── metrics/
+│       └── README.md            # Metric implementation details (PSNR/SSIM/LPIPS)
+├── scripts/
+│   ├── compute_stats.py         # Automated metric computation
+│   └── plot_metrics.py          # Figure generation scripts
+├── results/
+│   └── all_results.csv          # PSNR / SSIM / LPIPS / FPS / VRAM / Training Time
+└── figures/
+    ├── README.md                # Figure descriptions
+    └── taxonomy_reference.png   # Reference taxonomy structure
+```
+
+---
+
+## Quick Start
+
+### 1. Clone and install dependencies
+
+```bash
+git clone https://github.com/autumn119/3DGS-Survey-Taxonomy-Benchmark.git
+cd 3DGS-Survey-Taxonomy-Benchmark
+pip install -r requirements.txt
+```
+
+### 2. Compute evaluation metrics
+
+```bash
+python scripts/compute_stats.py \
+    --results_dir path/to/rendered_results/ \
+    --output results/all_results.csv
+```
+
+This script automatically computes **PSNR**, **SSIM**, and **LPIPS** for all methods against ground-truth images.
+
+### 3. Generate paper figures
+
+```bash
+python scripts/plot_metrics.py \
+    --csv results/all_results.csv \
+    --output_dir figures/
+```
+
+---
+
+## Taxonomy Overview
+
+Our taxonomy organizes 3DGS methods along two orthogonal axes:
+
+| Axis | Categories |
+|------|-----------|
+| **Task / Application** | Optimization, Generalization, Dynamic Scenes, Surface Reconstruction, Editable GS, Physics Simulation, Human Reconstruction, AIGC, Autonomous Driving & SLAM |
+| **Technical Module** | Initialization, Attribute Expansion, Splatting, 3D Regularization, 2D Regularization, Pruning, Post-Processing, Integration (PointCloud/Mesh/Triplane) |
+
+The full classification table is available in [`taxonomy/3dgs_taxonomy.csv`](taxonomy/3dgs_taxonomy.csv).
+
+---
+
+## Benchmark Protocol
+
+All methods are evaluated under a **standardized protocol** to ensure fair comparison:
+
+| Item | Specification |
+|------|--------------|
+| **Datasets** | Mip-NeRF 360, Tanks&Temples, DeepBlending, Custom Drum Tower dataset |
+| **Metrics** | PSNR, SSIM, LPIPS (VGG), FPS, GPU VRAM, Training Time |
+| **Hardware** | NVIDIA RTX 4090 (24 GB VRAM) |
+| **Software** | Ubuntu 22.04, CUDA 11.8, PyTorch 2.x |
+| **Reproducibility** | Fixed random seeds, standardized train/test splits, identical resolution |
+
+Full protocol details: [`benchmark/config.md`](benchmark/config.md)
+
+---
+
+## Citation
+
+If you find this repository useful, please cite our paper:
+
+```bibtex
+@article{author2025survey,
+  title     = {3D Gaussian Splatting: A Comprehensive Taxonomy and Benchmark Survey},
+  author    = {[Your Name]},
+  journal   = {[Journal/Conference Name]},
+  year      = {2025},
+  doi       = {10.5281/zenodo.20263999}
+}
+```
+
+A ready-to-use `CITATION.cff` file is included for GitHub-compatible citation metadata.
+
+---
+
+## License
+
+This project is licensed under the **MIT License** — see [`LICENSE`](LICENSE) for details.
+
+---
+
+## Acknowledgments
+
+This work builds upon [awesome-3DGS (arXiv:2407.17418)](https://github.com/MrNeRF/awesome-3D-gaussian-splatting) and the [SoTA-Point-Cloud Taxonomy](https://github.com/QingyongHu/SoTA-Point-Cloud). We thank the original 3DGS authors ([Kerbl et al., SIGGRAPH 2023](https://github.com/graphdeco-inria/gaussian-splatting)) for their foundational work.
+
+---
+
+*Last updated: 2026-05-21*
