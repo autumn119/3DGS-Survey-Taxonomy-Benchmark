@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+authors:
+  - family-names: "YourLastName"
+    given-names: "YourFirstName"
+    orcid: "https://orcid.org/0000-0000-0000-0000"
+title: "3D Gaussian Splatting: A Comprehensive Taxonomy and Benchmark Survey"
+version: 1.0.0
+date-released: 2025-12-01
+url: "https://github.com/your-username/3DGS-Survey-Taxonomy-Benchmark"
+repository-code: "https://github.com/your-username/3DGS-Survey-Taxonomy-Benchmark"
+license: MIT
+keywords:
+  - "3D Gaussian Splatting"
+  - "novel view synthesis"
+  - "neural rendering"
+  - "3d reconstruction"
+  - "benchmark"
+  - "survey"

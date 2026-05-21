@@ -1,0 +1,9 @@
+Method Name,Year,Venue,Task Type,Module Focus,Input Modality,Scene Type,Dynamic Support,Code Link,Notes
+3DGS,2023,SIGGRAPH,Reconstruction,Base Method,Multi-view Images,General,No,https://github.com/graphdeco-inria/gaussian-splatting,Original 3DGS paper
+Scaffold-GS,2024,CVPR,Reconstruction,Anchoring + Pruning,Multi-view Images,General,No,https://github.com/city-super/Scaffold-GS,Anchor-based growth control
+Mip-Splatting,2024,CVPR,Reconstruction,Anti-aliasing,Multi-view Images,General,No,https://github.com/autonomousvision/mip-splatting,3D frequency sampling
+4DGS,2024,CVPR,Reconstruction,Temporal Modeling,Monocular Video,Dynamic,Yes,https://github.com/fudan-zvg/4d-gaussian-splatting,Dynamic scene support
+SuGaR,2024,CVPR,Reconstruction,Surface Alignment,Multi-view Images,General,No,https://github.com/Anttwo/SuGaR,Mesh extraction from 3DGS
+Compact3D,2024,ECCV,Reconstruction,Compression,Multi-view Images,General,No,https://github.com/ucdvision/compact3d,Quantized 3DGS
+PixelGS,2024,ECCV,Reconstruction,Densification,Multi-view Images,General,No,https://github.com/zhengzhang01/PixelGS,Pixel-wise densification
+GaussianPro,2024,TPAMI,Reconstruction,Optimization,Multi-view Images,Large-scale,No,https://github.com/kcheng1021/GaussianPro,Progressive optimization
