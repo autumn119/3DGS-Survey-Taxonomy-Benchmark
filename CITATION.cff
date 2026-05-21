@@ -1,14 +1,13 @@
 cff-version: 1.2.0
 message: "If you use this work, please cite it as below."
 authors:
-  - family-names: "YourLastName"
-    given-names: "YourFirstName"
-    orcid: "https://orcid.org/0000-0000-0000-0000"
+  - family-names: "[你的姓]"
+    given-names: "[你的名]"
 title: "3D Gaussian Splatting: A Comprehensive Taxonomy and Benchmark Survey"
-version: 1.0.0
-date-released: 2025-12-01
-url: "https://github.com/your-username/3DGS-Survey-Taxonomy-Benchmark"
-repository-code: "https://github.com/your-username/3DGS-Survey-Taxonomy-Benchmark"
+version: 1.0.1
+date-released: 2026-05-21
+url: "https://github.com/autumn119/3DGS-Survey-Taxonomy-Benchmark"
+repository-code: "https://github.com/autumn119/3DGS-Survey-Taxonomy-Benchmark"
 license: MIT
 keywords:
   - "3D Gaussian Splatting"
