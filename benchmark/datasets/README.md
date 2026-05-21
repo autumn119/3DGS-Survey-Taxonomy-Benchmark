@@ -46,8 +46,7 @@ python convert.py -s path/to/db/scene_name
 - **Resolution**: 400×400
 - **Train/Val/Test**: 134 / 15 / 56
 - **Format**: Blender format (transforms_train.json, transforms_val.json, transforms_test.json)
-- **Location**: `/root/autodl-tmp/datasets/drum_tower/`
-
+- **Availability**: Will be released alongside the paper at [TBD] or upon request to the      corresponding author
 **Preprocessing:**
 ```bash
 # Dataset already in Blender format
