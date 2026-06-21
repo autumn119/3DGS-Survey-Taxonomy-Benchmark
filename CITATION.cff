@@ -1,8 +1,8 @@
 cff-version: 1.2.0
 message: "If you use this work, please cite it as below."
 authors:
-  - family-names: "WanTao"
-    given-names: "Huang"
+  - family-names: "JiaXing"
+    given-names: "Tao"
 title: "3D Gaussian Splatting: A Comprehensive Taxonomy and Benchmark Survey"
 version: 1.0.2
 date-released: 2026-05-21
